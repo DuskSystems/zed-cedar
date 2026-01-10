@@ -1,0 +1,11 @@
+name = "Cedar"
+grammar = "cedar"
+path_suffixes = ["cedar"]
+line_comments = ["// "]
+tab_size = 4
+brackets = [
+  { start = "{", end = "}", close = true, newline = true },
+  { start = "[", end = "]", close = true, newline = true },
+  { start = "(", end = ")", close = true, newline = true },
+  { start = "\"", end = "\"", close = true, newline = false, not_in = ["string"] },
+]
