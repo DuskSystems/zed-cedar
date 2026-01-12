@@ -5,12 +5,21 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   # nix flake show
   outputs =
     {
       nixpkgs,
+      rust-overlay,
       ...
     }:
 
@@ -22,6 +31,10 @@
 
         import nixpkgs {
           inherit system;
+
+          overlays = [
+            rust-overlay.overlays.default
+          ];
         }
       );
 
@@ -36,31 +49,34 @@
           env = {
             # Nix
             NIX_PATH = "nixpkgs=${nixpkgs.outPath}";
-
-            # Rust
-            RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
           };
 
           buildInputs = with pkgs; [
             # Rust
-            rustc
-            cargo
-            clippy
-            rustfmt
-            rust-analyzer
-            taplo
+            (rust-bin.stable.latest.minimal.override {
+              extensions = [
+                "clippy"
+                "rust-analyzer"
+                "rust-src"
+                "rustfmt"
+              ];
+            })
 
-            # GitHub
-            zizmor
+            # Nix
+            deadnix
+            nil
+            nixd
+            nixfmt
 
             # Spellchecking
             typos
             typos-lsp
 
-            # Nix
-            nixfmt
-            nixd
-            nil
+            # TOML
+            tombi
+
+            # GitHub
+            zizmor
           ];
         };
       });

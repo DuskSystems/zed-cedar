@@ -1,11 +1,13 @@
 (comment) @comment
 
 (string) @string
+
 (escape_sequence) @string.escape
 
 (integer) @number
 
 (true) @boolean
+
 (false) @boolean
 
 [
@@ -13,6 +15,7 @@
   "forbid"
   "when"
   "unless"
+  "advice"
   "template"
 ] @keyword
 
@@ -27,17 +30,17 @@
   "has"
   "like"
   "is"
-] @keyword.operator
+] @operator
 
 [
   "principal"
   "action"
   "resource"
   "context"
-] @variable
+] @variable.builtin
 
 (slot
-  "?" @variable.parameter
+  "?" @punctuation.special
   (identifier) @variable.parameter)
 
 [
@@ -82,26 +85,47 @@
   "@" @punctuation.special
   (identifier) @attribute)
 
-((extension_call
-  (name (identifier) @function))
-  (#any-of? @function "ip" "decimal" "datetime" "duration"))
+(extension_call
+  (name
+    (identifier) @function))
 
-((method_call
+(method_call
   (identifier) @function.method)
-  (#any-of? @function.method
-    "contains" "containsAll" "containsAny"
-    "isEmpty"
-    "getTag" "hasTag"
-    "isIpv4" "isIpv6" "isLoopback" "isMulticast" "isInRange"
-    "lessThan" "lessThanOrEqual" "greaterThan" "greaterThanOrEqual"
-    "offset" "durationSince" "toDate" "toTime"
-    "toMilliseconds" "toSeconds" "toMinutes" "toHours" "toDays"))
 
-(field_access (identifier) @property)
-(record_entry (identifier) @property)
-(ref_init (identifier) @property)
+(field_access
+  (identifier) @property)
 
-(entity_reference (identifier) @type)
-(type_reference (name (identifier) @type))
-(scope_constraint "is" (name (identifier) @type))
-(relation_expression "is" (name (identifier) @type))
+(record_entry
+  (identifier) @property)
+
+(ref_init
+  (identifier) @property)
+
+(relation_expression
+  "has"
+  .
+  (unary_expression
+    (member_expression
+      .
+      (identifier) @property)))
+
+(entity_reference
+  (identifier) @type)
+
+(type_reference
+  (name
+    (identifier) @type))
+
+(scope_constraint
+  "is"
+  (name
+    (identifier) @type))
+
+(relation_expression
+  "is"
+  (name
+    (identifier) @type))
+
+(relation_expression
+  "like"
+  (string) @string.special)

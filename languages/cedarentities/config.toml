@@ -1,0 +1,12 @@
+name = "Cedar Entities"
+grammar = "cedarentities"
+path_suffixes = ["cedarentities"]
+line_comments = ["// "]
+tab_size = 4
+autoclose_before = ";:.,=}])>"
+brackets = [
+  { start = "{", end = "}", close = true, newline = true },
+  { start = "[", end = "]", close = true, newline = true },
+  { start = "(", end = ")", close = true, newline = true },
+  { start = "\"", end = "\"", close = true, newline = false },
+]

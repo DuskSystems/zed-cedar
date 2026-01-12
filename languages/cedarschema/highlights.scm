@@ -1,6 +1,7 @@
 (comment) @comment
 
 (string) @string
+
 (escape_sequence) @string.escape
 
 [
@@ -18,13 +19,14 @@
 (integer) @number
 
 (true) @boolean
+
 (false) @boolean
 
 [
   "principal"
   "resource"
   "context"
-] @variable
+] @variable.builtin
 
 [
   "Bool"
@@ -59,18 +61,29 @@
   "@" @punctuation.special
   (identifier) @attribute)
 
-(namespace (name (identifier) @module))
+(entity_declaration
+  (identifier_list
+    (identifier) @type))
 
-(entity_declaration (identifier_list (identifier) @type))
+(action_declaration
+  (action_name_list
+    (identifier) @function))
 
-(action_declaration (action_name_list (identifier) @function))
+(common_type_declaration
+  (identifier) @type.definition)
 
-(common_type_declaration (identifier) @type.definition)
+(attribute_declaration
+  (identifier) @property)
 
-(attribute_declaration (identifier) @property)
+(attribute_entry
+  (identifier) @property)
 
-(attribute_entry (identifier) @property)
+(name
+  (identifier) @type)
 
-(name (identifier) @type)
+(qualified_name
+  (identifier) @type)
 
-(qualified_name (identifier) @type)
+(namespace
+  (name
+    (identifier) @module))
