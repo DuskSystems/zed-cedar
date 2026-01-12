@@ -9,12 +9,12 @@ repository = "https://github.com/DuskSystems/zed-cedar"
 [grammars.cedar]
 repository = "https://github.com/DuskSystems/tree-sitter-cedar"
 path = "cedar"
-commit = "02d76fdb8bdbffc5875207b0e928ab6b2617bc35"
+commit = "08f4c3a869b1d88b71bbed61b3b9df9b1c78d30f"
 
 [grammars.cedarschema]
 repository = "https://github.com/DuskSystems/tree-sitter-cedar"
 path = "cedarschema"
-commit = "02d76fdb8bdbffc5875207b0e928ab6b2617bc35"
+commit = "08f4c3a869b1d88b71bbed61b3b9df9b1c78d30f"
 
 [language_servers.cedar-language-server]
 name = "Cedar Language Server"
