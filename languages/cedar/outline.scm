@@ -6,4 +6,10 @@
   (#eq? @_id "id")) @item
 
 (policy
-  . (effect) @name) @item
+  .
+  (effect) @name) @item
+
+(policy
+  .
+  (template_declaration)
+  (effect) @name) @item

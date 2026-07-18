@@ -12,6 +12,11 @@
   (action_name_list
     (identifier) @name @item))
 
+(action_declaration
+  "action" @context
+  (action_name_list
+    (string) @name @item))
+
 (common_type_declaration
   "type" @context
   (identifier) @name) @item

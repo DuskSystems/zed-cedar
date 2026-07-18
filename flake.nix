@@ -68,6 +68,9 @@
             nixd
             nixfmt
 
+            # Tree Sitter
+            ts_query_ls
+
             # Spellchecking
             typos
             typos-lsp

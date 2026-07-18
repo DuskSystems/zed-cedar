@@ -6,6 +6,8 @@
 
 (integer) @number
 
+(decimal) @number
+
 (true) @boolean
 
 (false) @boolean
@@ -30,14 +32,14 @@
   "has"
   "like"
   "is"
-] @operator
+] @keyword.operator
 
 [
   "principal"
   "action"
   "resource"
   "context"
-] @variable.builtin
+] @variable
 
 (slot
   "?" @punctuation.special
@@ -87,10 +89,14 @@
 
 (extension_call
   (name
-    (identifier) @function))
+    (identifier) @module))
+
+(extension_call
+  (name
+    (identifier) @function.builtin .))
 
 (method_call
-  (identifier) @function.method)
+  (identifier) @function.builtin)
 
 (field_access
   (identifier) @property)
@@ -98,8 +104,27 @@
 (record_entry
   (identifier) @property)
 
+(record_entry
+  .
+  (string) @property)
+
+(attribute_declaration
+  (identifier) @property)
+
+(attribute_declaration
+  (string) @property)
+
+(attribute_declaration
+  "?" @punctuation.special)
+
 (ref_init
   (identifier) @property)
+
+(ref_init
+  "-" @number)
+
+(index_access
+  (string) @property)
 
 (relation_expression
   "has"
@@ -109,23 +134,61 @@
       .
       (identifier) @property)))
 
+(relation_expression
+  "has"
+  .
+  (unary_expression
+    (member_expression
+      .
+      (string) @property)))
+
 (entity_reference
-  (identifier) @type)
+  (identifier) @module)
+
+(entity_reference
+  (identifier) @type
+  .
+  (string))
+
+(entity_reference
+  (identifier) @type
+  .
+  (entity_record))
 
 (type_reference
   (name
-    (identifier) @type))
+    (identifier) @module))
+
+(type_reference
+  (name
+    (identifier) @type .))
 
 (scope_constraint
   "is"
   (name
-    (identifier) @type))
+    (identifier) @module))
+
+(scope_constraint
+  "is"
+  (name
+    (identifier) @type .))
 
 (relation_expression
   "is"
   (name
-    (identifier) @type))
+    (identifier) @module))
+
+(relation_expression
+  "is"
+  (name
+    (identifier) @type .))
 
 (relation_expression
   "like"
-  (string) @string.special)
+  (string) @string.regexp)
+
+(type_reference
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)

@@ -5,6 +5,12 @@
   "file_scan_exclusions": ["**/.direnv", "**/.git"],
 
   "languages": {
+    "Tree-sitter Query": {
+      "language_servers": ["ts_query_ls"],
+      "format_on_save": "on",
+      "formatter": "language_server"
+    },
+
     "Rust": {
       "language_servers": ["rust-analyzer"],
       "format_on_save": "on",
@@ -25,6 +31,12 @@
   },
 
   "lsp": {
+    "ts_query_ls": {
+      "binary": {
+        "path": "ts_query_ls"
+      }
+    },
+
     "rust-analyzer": {
       "binary": {
         "path": "rust-analyzer"
