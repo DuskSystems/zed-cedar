@@ -19,7 +19,9 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
+        "tree-sitter-cedar": "tree-sitter-cedar",
+        "zed-extensions": "zed-extensions"
       }
     },
     "rust-overlay": {
@@ -39,6 +41,49 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "tree-sitter-cedar": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784665336,
+        "narHash": "sha256-ZS+d8+NZUssGCv3+dD1Lcfgn5ra+tlxVUHapjcH12MM=",
+        "owner": "DuskSystems",
+        "repo": "tree-sitter-cedar",
+        "rev": "e32001b72de95e629706062991b2b32c4df9b9bd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DuskSystems",
+        "repo": "tree-sitter-cedar",
+        "type": "github"
+      }
+    },
+    "zed-extensions": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784613113,
+        "narHash": "sha256-63oyojgjOaDrBnT6cA/8x9gigSEEtbI0avYGavBXjwA=",
+        "owner": "DuskSystems",
+        "repo": "nix-zed-extensions",
+        "rev": "c86b775af2cb262ef6b391045750c3447b952f83",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DuskSystems",
+        "repo": "nix-zed-extensions",
         "type": "github"
       }
     }

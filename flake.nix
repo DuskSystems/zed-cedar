@@ -13,13 +13,32 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
+    zed-extensions = {
+      url = "github:DuskSystems/nix-zed-extensions";
+
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
+
+    tree-sitter-cedar = {
+      url = "github:DuskSystems/tree-sitter-cedar";
+
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   # nix flake show
   outputs =
     {
+      self,
       nixpkgs,
-      rust-overlay,
+      zed-extensions,
+      tree-sitter-cedar,
       ...
     }:
 
@@ -33,14 +52,31 @@
           inherit system;
 
           overlays = [
-            rust-overlay.overlays.default
+            self.overlays.default
           ];
         }
       );
 
       perSystemPkgs = f: perSystem (system: f (systemPkgs.${system}));
+      extension = fromTOML (builtins.readFile ./extension.toml);
     in
     {
+      overlays = {
+        default = nixpkgs.lib.composeManyExtensions [
+          tree-sitter-cedar.overlays.default
+          zed-extensions.overlays.default
+
+          (_final: prev: {
+            zed-cedar = prev.callPackage ./package.nix { inherit extension; };
+          })
+        ];
+      };
+
+      packages = perSystemPkgs (pkgs: {
+        default = pkgs.zed-cedar;
+        zed-cedar = pkgs.zed-cedar;
+      });
+
       devShells = perSystemPkgs (pkgs: {
         # nix develop
         default = pkgs.mkShell {
