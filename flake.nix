@@ -15,7 +15,7 @@
     };
 
     zed-extensions = {
-      url = "github:DuskSystems/nix-zed-extensions";
+      url = "github:SwornSystems/nix-zed-extensions";
 
       inputs = {
         nixpkgs.follows = "nixpkgs";
@@ -24,7 +24,7 @@
     };
 
     tree-sitter-cedar = {
-      url = "github:DuskSystems/tree-sitter-cedar";
+      url = "github:SwornSystems/tree-sitter-cedar";
 
       inputs = {
         nixpkgs.follows = "nixpkgs";
@@ -53,6 +53,22 @@
 
           overlays = [
             self.overlays.default
+            (final: _prev: {
+              tree-sitter-parsers = final.linkFarm "tree-sitter-parsers" {
+                "cedar.so" = "${final.tree-sitter-cedar}/parser";
+                "cedarentities.so" = "${final.tree-sitter-cedarentities}/parser";
+                "cedarschema.so" = "${final.tree-sitter-cedarschema}/parser";
+              };
+
+              vale-styles = final.symlinkJoin {
+                name = "vale-styles";
+                paths = with final.valeStyles; [
+                  proselint
+                  write-good
+                  redhat
+                ];
+              };
+            })
           ];
         }
       );
@@ -85,11 +101,17 @@
           env = {
             # Nix
             NIX_PATH = "nixpkgs=${nixpkgs.outPath}";
+
+            # Tree Sitter
+            TREE_SITTER_PARSERS = "${pkgs.tree-sitter-parsers}";
+
+            # Vale
+            VALE_STYLES_PATH = "${pkgs.vale-styles}/share/vale/styles";
           };
 
           buildInputs = with pkgs; [
             # Rust
-            (rust-bin.stable.latest.minimal.override {
+            (rust-bin.nightly.latest.minimal.override {
               extensions = [
                 "clippy"
                 "rust-analyzer"
@@ -97,12 +119,17 @@
                 "rustfmt"
               ];
             })
+            cargo-deny
+            cargo-outdated
+            cargo-shear
 
-            # Nix
-            deadnix
-            nil
-            nixd
-            nixfmt
+            # Git
+            committed
+
+            # GitHub
+            gh
+            pinact
+            zizmor
 
             # Tree Sitter
             ts_query_ls
@@ -111,11 +138,77 @@
             typos
             typos-lsp
 
+            # Markdown
+            lychee
+            vale
+            vale-ls
+
             # TOML
             tombi
 
+            # Nushell
+            nushell
+            nufmt
+            nu-lint
+
+            # Nix
+            deadnix
+            nil
+            nixd
+            nixfmt
+          ];
+        };
+
+        # nix develop .#ci
+        ci = pkgs.mkShell {
+          name = "zed-cedar-ci-shell";
+
+          env = {
+            # Tree Sitter
+            TREE_SITTER_PARSERS = "${pkgs.tree-sitter-parsers}";
+
+            # Vale
+            VALE_STYLES_PATH = "${pkgs.vale-styles}/share/vale/styles";
+          };
+
+          buildInputs = with pkgs; [
+            # Rust
+            (rust-bin.nightly.latest.minimal.override {
+              extensions = [
+                "clippy"
+                "rustfmt"
+              ];
+            })
+            cargo-deny
+            cargo-shear
+
+            # Git
+            committed
+
             # GitHub
             zizmor
+
+            # Tree Sitter
+            ts_query_ls
+
+            # Spellchecking
+            typos
+
+            # Markdown
+            lychee
+            vale
+
+            # TOML
+            tombi
+
+            # Nushell
+            nushell
+            nufmt
+            nu-lint
+
+            # Nix
+            deadnix
+            nixfmt
           ];
         };
       });

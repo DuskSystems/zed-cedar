@@ -17,6 +17,22 @@
       "formatter": "language_server"
     },
 
+    "Markdown": {
+      "language_servers": ["vale", "typos"],
+      "soft_wrap": "none"
+    },
+
+    "Nu": {
+      "language_servers": ["nu", "nu-lint"],
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "nufmt",
+          "arguments": ["--stdin"]
+        }
+      }
+    },
+
     "Nix": {
       "language_servers": ["nixd", "nil"],
       "format_on_save": "on",
@@ -81,6 +97,26 @@
     "typos": {
       "binary": {
         "path": "typos-lsp"
+      }
+    },
+
+    "vale": {
+      "binary": {
+        "path": "vale-ls"
+      }
+    },
+
+    "nu": {
+      "binary": {
+        "path": "nu",
+        "arguments": ["--lsp"]
+      }
+    },
+
+    "nu-lint": {
+      "binary": {
+        "path": "nu-lint",
+        "arguments": ["--lsp", "--config", ".nu-lint.toml"]
       }
     }
   }

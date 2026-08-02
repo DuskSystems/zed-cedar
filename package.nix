@@ -1,4 +1,5 @@
 {
+  lib,
   extension,
   runCommand,
   buildZedRustExtension,
@@ -11,8 +12,18 @@ buildZedRustExtension {
   inherit (extension) version;
   name = extension.id;
 
-  src = ./.;
-  cargoHash = "sha256-RQV3E4e8S4HXZnEXpTNy+7o6OEs4kTNxbiiRKd0AyMU=";
+  src = lib.fileset.toSource {
+    root = ./.;
+    fileset = lib.fileset.unions [
+      ./Cargo.lock
+      ./Cargo.toml
+      ./extension.toml
+      ./languages
+      ./src
+    ];
+  };
+
+  cargoHash = "sha256-BQiwCOovVh9OrtqHt3iJrMimc1pizO6sh9O8Pqu8Aak=";
 
   grammars = [
     (runCommand "zed-grammar-cedar" { } ''

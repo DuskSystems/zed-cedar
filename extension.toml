@@ -1,25 +1,25 @@
 id = "cedar"
 name = "Cedar"
-version = "0.11.2"
+version = "0.12.0"
 schema_version = 1
 authors = ["Cathal Mullan <contact@cathal.dev>"]
 description = "Cedar language support for Zed"
-repository = "https://github.com/DuskSystems/zed-cedar"
+repository = "https://github.com/SwornSystems/zed-cedar"
 
 [grammars.cedar]
-repository = "https://github.com/DuskSystems/tree-sitter-cedar"
+repository = "https://github.com/SwornSystems/tree-sitter-cedar"
 path = "cedar"
-commit = "e32001b72de95e629706062991b2b32c4df9b9bd"
+commit = "112e886c976951095b43ad91929269f9c1cca17d"
 
 [grammars.cedarentities]
-repository = "https://github.com/DuskSystems/tree-sitter-cedar"
+repository = "https://github.com/SwornSystems/tree-sitter-cedar"
 path = "cedarentities"
-commit = "e32001b72de95e629706062991b2b32c4df9b9bd"
+commit = "112e886c976951095b43ad91929269f9c1cca17d"
 
 [grammars.cedarschema]
-repository = "https://github.com/DuskSystems/tree-sitter-cedar"
+repository = "https://github.com/SwornSystems/tree-sitter-cedar"
 path = "cedarschema"
-commit = "e32001b72de95e629706062991b2b32c4df9b9bd"
+commit = "112e886c976951095b43ad91929269f9c1cca17d"
 
 [language_servers.cedar-language-server]
 name = "Cedar Language Server"

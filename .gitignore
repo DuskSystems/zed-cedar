@@ -1,6 +1,9 @@
 # Rust
 target
 
+# Lychee
+.lycheecache
+
 # Nix
 result
 result-*

@@ -1,0 +1,118 @@
+# https://embarkstudios.github.io/cargo-deny
+
+[graph]
+all-features = true
+exclude-dev = true
+
+# https://embarkstudios.github.io/cargo-deny/checks/advisories/cfg.html
+[advisories]
+db-path = "~/.cargo/advisory-db"
+db-urls = ["https://github.com/rustsec/advisory-db"]
+unmaintained = "all"
+yanked = "deny"
+
+# https://embarkstudios.github.io/cargo-deny/checks/licenses/cfg.html
+[licenses]
+confidence-threshold = 0.9
+include-dev = true
+unused-allowed-license = "deny"
+allow = [
+  "0BSD",
+  "Apache-2.0",
+  "MIT",
+  "Unicode-3.0",
+  "Zlib",
+]
+
+# https://embarkstudios.github.io/cargo-deny/checks/bans/cfg.html
+[bans]
+allow-wildcard-paths = true
+multiple-versions = "deny"
+wildcards = "deny"
+deny = []
+skip = [
+  { crate = "hashbrown@0.15" },
+  { crate = "syn@2" },
+]
+
+# https://embarkstudios.github.io/cargo-deny/checks/bans/cfg.html#the-build-field-optional
+[bans.build]
+executables = "deny"
+interpreted = "deny"
+allow-build-scripts = []
+
+[[bans.build.bypass]]
+crate = "anyhow"
+build-script = "89d1baedcff59822ed692d3a33f131c211a213bdec33c83f68b54110d9c64223"
+
+[[bans.build.bypass]]
+crate = "crc32fast"
+build-script = "62279ea110418e1b57e46ed5689cae892f3fa424ba237733ecbf4660c3dee71c"
+
+[[bans.build.bypass]]
+crate = "icu_normalizer_data"
+build-script = "c2d446772e3d766a804963dbf36e51729f910920f91f4b68c0c199fe6ca0853e"
+
+[[bans.build.bypass]]
+crate = "icu_properties_data"
+build-script = "c2d446772e3d766a804963dbf36e51729f910920f91f4b68c0c199fe6ca0853e"
+
+[[bans.build.bypass]]
+crate = "prettyplease"
+build-script = "79a5b2d260aa97aeac7105fbfa00774982f825cd708c100ea96d01c39974bb88"
+
+[[bans.build.bypass]]
+crate = "proc-macro2"
+build-script = "baeb20b52f6b536be8657a566591a507bb2e34a45cf8baa42b135510a0c3c729"
+
+[[bans.build.bypass]]
+crate = "quote"
+build-script = "cd6808c02e476b09a520105e2c6f6d325cccb1ecd542cbbcc836a0ae6f6fb0f1"
+
+[[bans.build.bypass]]
+crate = "serde"
+build-script = "e2ea6a7a82f5404c3e28cb055883c737ee7903367a10206fbb47b75c009f0eb3"
+
+[[bans.build.bypass]]
+crate = "serde_core"
+build-script = "7bc6b1eec8913ff4cd8e4b9b92cd04a82a4f38beb30a0b73a64c1e6e49f07b5f"
+
+[[bans.build.bypass]]
+crate = "serde_json"
+build-script = "a681e754be844c7dbef957f5d2d00b01f37c5dca160ef1055a8d8f975697a881"
+
+[[bans.build.bypass]]
+crate = "wasm-encoder"
+build-script = "ba7ab1735d3642c53562d1223a6eb54c2392e619ade3005e0deee3fc4229feea"
+
+[[bans.build.bypass]]
+crate = "wasmparser"
+build-script = "ba7ab1735d3642c53562d1223a6eb54c2392e619ade3005e0deee3fc4229feea"
+
+[[bans.build.bypass]]
+crate = "wit-bindgen-rt"
+build-script = "7677793f7a9a1a7c1c0241f37e2be90cce7f3ceb6e7c5c9fe825e60e24e3bd88"
+
+[[bans.build.bypass]]
+crate = "wit-bindgen-rust"
+build-script = "cfaf523d6df2dd7550321bca87af671fe494dad8ccdf2b4164c096760791bfdf"
+
+[[bans.build.bypass]]
+crate = "wit-bindgen-rust-macro"
+build-script = "0067e626dfcf105d55adda251ed37b72dd4797c764dc8bf08511d847fc7a4a7a"
+
+[[bans.build.bypass]]
+crate = "zed_extension_api"
+build-script = "c8d7bd1823f0b23d9c586818e6bdeef20c876c3533b4eb8ce8387b4e27e744f2"
+
+[[bans.build.bypass]]
+crate = "zmij"
+build-script = "ad320bc635887879bdbbf1b9322da4a157ec2c5a4243bd7c2cf9b6884a3b2a41"
+
+# https://embarkstudios.github.io/cargo-deny/checks/sources/cfg.html
+[sources]
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+unknown-registry = "deny"
+unknown-git = "deny"
+unused-allowed-source = "deny"
+allow-git = []

@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1784282293,
-        "narHash": "sha256-IpX7tmVJi9seHg5M4Wuexy78bQDlbntVk1HcT9kFts4=",
+        "lastModified": 1785542685,
+        "narHash": "sha256-sjfvXMbG5pCFgpvw2OZAFcZiTvrppCWvnB6cuGrSY08=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a47c123a609287a012dfc44d281de2dd4ed13394",
+        "rev": "f8e81fc7eb063db454f563cdd596fb96a5ad1497",
         "type": "github"
       },
       "original": {
@@ -31,11 +31,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784265529,
-        "narHash": "sha256-ohQQiPOngux8ofsrSlloHCMDhRMvocXqJiG8uH45Q5k=",
+        "lastModified": 1785562362,
+        "narHash": "sha256-J15aBa3d6B1SUUAQydQ06wFjPzrrcVceb6jkdfwfGls=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "068175006cfb69d5b541a140ed93e361488c9e53",
+        "rev": "5f29c219a7655519f8a9f8c6968064b82c17cc93",
         "type": "github"
       },
       "original": {
@@ -51,15 +51,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1784665336,
-        "narHash": "sha256-ZS+d8+NZUssGCv3+dD1Lcfgn5ra+tlxVUHapjcH12MM=",
-        "owner": "DuskSystems",
+        "lastModified": 1785636475,
+        "narHash": "sha256-AcOPJKDEFNo5QkJAgcyQBVn2faEw7HQeOEvKh3/N1Rk=",
+        "owner": "SwornSystems",
         "repo": "tree-sitter-cedar",
-        "rev": "e32001b72de95e629706062991b2b32c4df9b9bd",
+        "rev": "81fc6b8ea12893ca085b191cedebe617be8f019d",
         "type": "github"
       },
       "original": {
-        "owner": "DuskSystems",
+        "owner": "SwornSystems",
         "repo": "tree-sitter-cedar",
         "type": "github"
       }
@@ -74,15 +74,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1784613113,
-        "narHash": "sha256-63oyojgjOaDrBnT6cA/8x9gigSEEtbI0avYGavBXjwA=",
-        "owner": "DuskSystems",
+        "lastModified": 1785635350,
+        "narHash": "sha256-La17rT/WZ+bG9l1heD/ebZK2cFdEvB90EWDYy5o1uRw=",
+        "owner": "SwornSystems",
         "repo": "nix-zed-extensions",
-        "rev": "c86b775af2cb262ef6b391045750c3447b952f83",
+        "rev": "2ced0b4bec90de5b06c18e4850dc96917e79cda1",
         "type": "github"
       },
       "original": {
-        "owner": "DuskSystems",
+        "owner": "SwornSystems",
         "repo": "nix-zed-extensions",
         "type": "github"
       }

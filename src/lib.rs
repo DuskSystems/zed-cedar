@@ -1,6 +1,5 @@
-use zed_extension_api::{
-    self as zed, Command, Extension, LanguageServerId, Result, Worktree, settings::LspSettings,
-};
+use zed_extension_api::settings::LspSettings;
+use zed_extension_api::{self as zed, Command, Extension, LanguageServerId, Result, Worktree};
 
 zed::register_extension!(CedarExtension);
 
