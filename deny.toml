@@ -53,7 +53,7 @@ build-script = "89d1baedcff59822ed692d3a33f131c211a213bdec33c83f68b54110d9c64223
 
 [[bans.build.bypass]]
 crate = "crc32fast"
-build-script = "62279ea110418e1b57e46ed5689cae892f3fa424ba237733ecbf4660c3dee71c"
+build-script = "deb6052c4a586e8875ef677fe2d9e9dcfafebfa949803455ea8eff6e7dbde436"
 
 [[bans.build.bypass]]
 crate = "icu_normalizer_data"
