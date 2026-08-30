@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
     rust-overlay = {
@@ -107,6 +107,9 @@
 
             # Vale
             VALE_STYLES_PATH = "${pkgs.vale-styles}/share/vale/styles";
+
+            # Cargo
+            CARGO_UNSTABLE_MIN_PUBLISH_AGE = "true";
           };
 
           buildInputs = with pkgs; [
@@ -169,6 +172,9 @@
 
             # Vale
             VALE_STYLES_PATH = "${pkgs.vale-styles}/share/vale/styles";
+
+            # Cargo
+            CARGO_UNSTABLE_MIN_PUBLISH_AGE = "true";
           };
 
           buildInputs = with pkgs; [

@@ -1,0 +1,5 @@
+# https://doc.rust-lang.org/cargo/reference/config.html
+
+# https://doc.rust-lang.org/cargo/reference/registries.html
+[registry]
+global-min-publish-age = "7 days"

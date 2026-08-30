@@ -60,12 +60,30 @@
 
       "initialization_options": {
         "cargo": {
-          "targetDir": true
+          "targetDir": true,
+          "features": "all"
         },
         "check": {
           "command": "clippy"
         },
-        "checkOnSave": true
+        "checkOnSave": true,
+        "hover": {
+          "memoryLayout": {
+            "enable": true,
+            "size": "decimal",
+            "alignment": "decimal",
+            "offset": "decimal",
+            "niches": true
+          }
+        },
+        "imports": {
+          "prefix": "crate",
+          "preferNoStd": true,
+          "granularity": {
+            "enforce": true,
+            "group": "module"
+          }
+        }
       }
     },
 
