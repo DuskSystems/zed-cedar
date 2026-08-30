@@ -23,7 +23,7 @@ buildZedRustExtension {
     ];
   };
 
-  cargoHash = "sha256-BQiwCOovVh9OrtqHt3iJrMimc1pizO6sh9O8Pqu8Aak=";
+  cargoHash = "sha256-maCC8dSd9rhIYg6Si0f9yWwuS4hOAj0844WY+bu8wFo=";
 
   grammars = [
     (runCommand "zed-grammar-cedar" { } ''
